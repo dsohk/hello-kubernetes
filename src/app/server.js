@@ -16,7 +16,7 @@ app.set('view engine', 'handlebars');
 // Configuration
 
 var port = process.env.PORT || 8080;
-var message = process.env.MESSAGE || 'Hello World';
+var message = process.env.MESSAGE || 'Welcome to Epinio Demo';
 var renderPathPrefix = (
   process.env.RENDER_PATH_PREFIX ? 
     '/' + process.env.RENDER_PATH_PREFIX.replace(/^[\\/]+/, '').replace(/[\\/]+$/, '') :
