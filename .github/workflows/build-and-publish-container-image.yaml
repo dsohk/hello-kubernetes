@@ -13,8 +13,8 @@ jobs:
     if: startsWith(github.ref, 'refs/tags/v')
 
     env:
-      CONTAINER_REGISTRY: docker.io
-      CONTAINER_IMAGE: paulbouwer/hello-kubernetes
+      CONTAINER_REGISTRY: https://harbor.18.143.86.236.sslip.io
+      CONTAINER_IMAGE: demo/hello-k8s
 
     steps:
 
@@ -37,7 +37,7 @@ jobs:
             --build-arg IMAGE_VERSION="$IMAGE_VERSION" \
             --build-arg IMAGE_CREATE_DATE="`date -u +"%Y-%m-%dT%H:%M:%SZ"`" \
             --build-arg IMAGE_SOURCE_REVISION="`git rev-parse HEAD`" \
-            --file src/app/Dockerfile src/app
+            --file src/app/Dockerfile.sle src/app
 
       - name: Create additional image tags
         run: |

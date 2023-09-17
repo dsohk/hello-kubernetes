@@ -1,0 +1,43 @@
+apiVersion: gitjob.cattle.io/v1
+kind: GitJob
+metadata:
+  name: hello-k8s-gitjob
+  namespace: default
+spec:
+  git:
+    branch: main
+    repo: https://github.com/dsohk/hello-kubernetes
+  jobSpec:
+    template:
+      spec:
+        containers:
+          - args:
+              - push
+              - '--name'
+              - hello-k8s
+              - '-p'
+              - src/app
+            command:
+              - /epinio
+            env:
+              - name: EPINIO_SETTINGS
+                value: /settings/settings.yaml
+            image: ghcr.io/epinio/epinio-server:v1.9.0
+            name: epinio-push
+            volumeMounts:
+              - mountPath: /settings/
+                name: settings
+                readOnly: true
+              - mountPath: /tmp
+                name: tmp
+                readOnly: false
+            workingDir: /workspace/source
+        restartPolicy: Never
+        serviceAccountName: epinio-gitjob
+        volumes:
+          - name: settings
+            secret:
+              secretName: epinio-creds
+          - emptyDir: {}
+            name: tmp
+  syncInterval: 15

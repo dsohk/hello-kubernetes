@@ -1,4 +1,4 @@
-FROM node:16-alpine3.13
+FROM registry.suse.com/bci/nodejs:16
 
 ARG IMAGE_CREATE_DATE
 ARG IMAGE_VERSION

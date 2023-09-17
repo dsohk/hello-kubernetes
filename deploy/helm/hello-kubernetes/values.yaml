@@ -8,14 +8,13 @@ ingress:
   pathPrefix: ""
 
 service:
-  type: LoadBalancer
-  port: 80
+  type: ClusterIP
 
 deployment:
   replicaCount: 2
   container:
     image:
-      repository: "paulbouwer/hello-kubernetes"
+      repository: "harbor.18.143.86.236.sslip.io/demo/hello-k8s"
       tag: "" # uses chart appVersion if not provided
       pullPolicy: IfNotPresent
     port: 8080

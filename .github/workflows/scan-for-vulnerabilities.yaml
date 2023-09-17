@@ -14,8 +14,8 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-      CONTAINER_REGISTRY: docker.io
-      CONTAINER_IMAGE: paulbouwer/hello-kubernetes
+      CONTAINER_REGISTRY: https://harbor.18.143.86.236.sslip.io
+      CONTAINER_IMAGE: demo/hello-k8s
 
     steps:
 
