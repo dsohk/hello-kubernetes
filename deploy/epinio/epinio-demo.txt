@@ -3,7 +3,7 @@
 epinio login -u admin https://epinio.192.168.0.50.sslip.io
 
 # push the code
-epinio push -u hello-k8s -p src/app
+epinio push -n hello-k8s -p src/app
 
 # download the container images and deployment manifests to local directory
 epinio app export hello-k8s .

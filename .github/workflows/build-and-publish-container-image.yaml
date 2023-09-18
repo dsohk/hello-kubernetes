@@ -37,7 +37,7 @@ jobs:
             --build-arg IMAGE_VERSION="$IMAGE_VERSION" \
             --build-arg IMAGE_CREATE_DATE="`date -u +"%Y-%m-%dT%H:%M:%SZ"`" \
             --build-arg IMAGE_SOURCE_REVISION="`git rev-parse HEAD`" \
-            --file src/app/Dockerfile.sle src/app
+            --file src/app/Dockerfile src/app
 
       - name: Create additional image tags
         run: |
