@@ -16,7 +16,7 @@ deployment:
   container:
     image:
       repository: "harbor.18.143.86.236.sslip.io/demo/hello-k8s"
-      tag: "" # uses chart appVersion if not provided
+      tag: "1.11.1" # uses chart appVersion if not provided
       pullPolicy: Always # IfNotPresent
     port: 8080
 
