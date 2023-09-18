@@ -29,5 +29,5 @@ RUN npm install
 # Bundle app source
 COPY . /usr/src/app
 
-USER node
+USER root
 CMD [ "npm", "start" ]

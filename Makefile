@@ -27,3 +27,15 @@ push-image:
 	docker push $(IMAGE):$(IMAGE_VERSION); \
 	docker push $(IMAGE):$(IMAGE_MAJOR_VERSION); \
 	docker push $(IMAGE):$(IMAGE_MAJOR_VERSION).$(IMAGE_MINOR_VERSION)
+
+.PHONY: helm-install
+helm-install:
+	helm install --create-namespace --namespace hello-kubernetes hello-k8s ./deploy/helm/hello-kubernetes \
+  	--set ingress.configured=true \
+  	--set ingress.pathPrefix="/app/hello-kubernetes/" \
+  	--set service.type="ClusterIP"
+
+.PHONY: helm-uninstall
+helm-uninstall:
+	helm uninstall hello-k8s -n hello-kubernetes
+
